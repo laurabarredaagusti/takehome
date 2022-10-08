@@ -27,6 +27,8 @@ class Create_df:
         self.main_tweet_df()
         self.main_author_df()
         self.drop_columns()
+        self.transform_text()
+        self.transform_date()
         self.get_detail_list()
         self.add_lists_to_df()
         self.drop_duplicates()
@@ -49,6 +51,15 @@ class Create_df:
     def drop_columns(self):
         self.tweet_df.drop(columns='public_metrics', axis=1, inplace=True)
         self.tweet_df.drop(columns='edit_history_tweet_ids', axis=1, inplace=True)
+
+    
+    def transform_text(self):
+        self.tweet_df['text'] = self.tweet_df['text'].str.replace('\n',' ')
+
+    
+    def transform_date(self):
+        self.tweet_df['created_at'] = self.tweet_df['created_at'].str.replace('.000Z',' ')
+        self.tweet_df["created_at"] = pd.to_datetime(self.tweet_df['created_at'], format="%Y-%m-%d %H:%M:%S")
 
 
     def get_detail_list(self):
