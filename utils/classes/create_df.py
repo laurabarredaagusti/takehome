@@ -29,20 +29,21 @@ class Create_df:
         self.drop_columns()
         self.get_detail_list()
         self.add_lists_to_df()
+        self.drop_duplicates()
 
 
     def main_tweet_df(self):
         for index, data in enumerate(self.data_list):
             data = data['data']
             self.df_tweet_list[index] = pd.DataFrame(data)
-            self.tweet_df = pd.concat(self.df_tweet_list)
+        self.tweet_df = pd.concat(self.df_tweet_list)
 
 
     def main_author_df(self):
         for index, data in enumerate(self.data_list):
             data = data['includes']['users']
             self.df_author_list[index] = pd.DataFrame(data)
-            self.author_df = pd.concat(self.df_author_list)
+        self.author_df = pd.concat(self.df_author_list)
 
 
     def drop_columns(self):
@@ -64,6 +65,13 @@ class Create_df:
         self.tweet_df['reply_count'] = self.reply_count
         self.tweet_df['like_count'] = self.like_count
         self.tweet_df['quote_count'] = self.quote_count
+
+    
+    def drop_duplicates(self):
+        self.author_df.drop_duplicates(subset=['id'], inplace=True)
+        self.tweet_df.drop_duplicates(subset=['id'], inplace=True)
+
+
 
         
 
