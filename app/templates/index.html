@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>European Soccer</title>
+    <meta name="description" content="European Soccer">
+    <meta name="keywords" content="European Soccer">
+    <style type="text/css">
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 150px;
+            padding: 0px;
+            background-image: url('static/images/background.jpg');
+            background-size: cover;
+        } 
+        .form {
+            display: flex;
+            flex-direction: column;
+            padding: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+    <h1 style="color:white;font-family:verdana;">Sentiment analysis</h1>
+
+    <div class="forms">
+        <div class="form">
+            <h2 style="color:white;font-family:verdana;">Enter your text</h2>
+            <form method="get" action="/predict" autocomplete="on" >
+                <input type="text" name="text" /><br/>
+                <button type="submit">Submit</bsutton>
+            </form>
+        </div>
+    </div>
+
+</html>
