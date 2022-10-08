@@ -3,7 +3,7 @@ import pandas as pd
 from os import environ
 from functions import *
 
-app = app = Flask(__name__)
+app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def hello():
