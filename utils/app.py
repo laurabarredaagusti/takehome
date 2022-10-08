@@ -1,8 +1,10 @@
-from functions import * 
 from variables import *
-from classes import *
+from classes.extract_data import *
+from classes.create_df import *
+from functions import *
 
+obj = Create_df()
 
-# get_all_tweets(files, start_date, max_results, tweet_fields, expansions)
+df_list = [obj.tweet_df, obj.author_df]
 
-Extract_data()
+create_database(df_list)

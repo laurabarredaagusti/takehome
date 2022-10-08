@@ -11,7 +11,7 @@ class Extract_data:
     expansions = expansions
     end_time = None
     user = user
-    next_token = None
+    files = files
 
     def __init__(self):
         self.auth()
@@ -31,11 +31,9 @@ class Extract_data:
                         'start_time': self.start_date,
                         'end_time' : self.end_time,
                         'max_results': self.max_results,
-                        'expansions': self.expansions,
-                        'next_token': {}}
+                        'expansions': self.expansions}
 
     def connect_to_endpoint(self):
-        self.params['next_token'] = self.next_token
         response = requests.request("GET", self.url, headers = self.headers, params = self.params)
         self.response_json = response.json()
         print("Endpoint Response Code: " + str(response.status_code))
@@ -43,9 +41,12 @@ class Extract_data:
             raise Exception(response.status_code, response.text)
 
     def get_all_tweets(self):
-        self.create_url()
-        self.connect_to_endpoint()
-        self.params["next_token"] = self.response_json["meta"]["next_token"]
-        print(self.params["next_token"])
-
+        for i in self.files:
+            self.create_url()
+            self.connect_to_endpoint()
+            self.end_time = self.response_json['data'][-1]['created_at']
+            if i == 1:
+                self.response_json_1 = self.response_json
+            else: 
+                self.response_json_2 = self.response_json
             
