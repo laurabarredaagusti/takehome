@@ -26,7 +26,7 @@ def predict():
     if prediction == 0:
         prediction = 'The sentiment of this tweet is positive'
     else:
-        prediction = 'The sentiment of this tweet is positive'
+        prediction = 'The sentiment of this tweet is negativa'
     return render_template('predict.html', predict=prediction)
 
 if __name__ == '__main__':
