@@ -23,10 +23,10 @@ def predict():
 
     prediction = model.predict(df['text'])
     prediction = prediction[0]
-    if prediction == 0:
-        prediction = 'The sentiment of this tweet is positive'
-    else:
-        prediction = 'The sentiment of this tweet is negativa'
+    # if prediction == 0:
+    #     prediction = 'The sentiment of this tweet is positive'
+    # else:
+    #     prediction = 'The sentiment of this tweet is negative'
     return render_template('predict.html', predict=prediction)
 
 if __name__ == '__main__':
