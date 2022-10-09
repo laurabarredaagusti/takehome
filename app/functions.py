@@ -5,7 +5,7 @@ import re
 from nltk.stem.snowball import SnowballStemmer
 
 def load_models(model_name):
-    path = 'static/models/' + model_name
+    path = 'home/yesimtrinity/technical_test_laura/app/static/models/' + model_name
     return pickle.load(open(path,'rb'))
 
 def get_arguments(arg):
