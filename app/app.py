@@ -23,11 +23,8 @@ def predict():
 
     prediction = model.predict(df['text'])
     prediction = prediction[0]
-    print(prediction)
     if prediction == '0':
         prediction = 'The sentiment of this tweet is positive'
-    elif prediction == '':
-        return render_template('index.html')
     else:
         prediction = 'The sentiment of this tweet is negative'
     return render_template('predict.html', predict=prediction)
